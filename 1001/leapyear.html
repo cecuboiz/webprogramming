@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Leap Year Check</title>
+<script>
+function checkLeapYear() {
+let year = document.getElementById("year").value;
+year = parseInt(year);
+
+if ((year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0)) {
+document.getElementById("result").innerText = year + " 년은 윤년입니다.";
+} else {
+document.getElementById("result").innerText = year + " 년은 평년입니다.";
+}
+}
+</script>
+</head>
+<body>
+<h2>Leap Year 확인하기</h2>
+<input type="number" id="year" placeholder="연도를 입력하세요">
+<button onclick="checkLeapYear()">확인</button>
+<p id="result"></p>
+</body>
+</html>
