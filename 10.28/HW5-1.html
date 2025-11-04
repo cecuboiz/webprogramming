@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>z-index style 프로퍼티</title>
+    <style>
+        div {
+            position: relative;
+        }
+        img{
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <h3>z-index style 프로퍼티</h3>
+    <hr>
+    <div>
+        <img src=" https://www.clipartbest.com/cliparts/Kij/o5y/Kijo5y64T.png  "
+        width="100" height="140" alt="스페이드A">
+         <img src="https://www.clipartbest.com/cliparts/bTy/6M4/bTy6M4Lbc.png   "
+        width="100" height="140" alt="스페이드2">
+         <img src=" https://www.clipartbest.com/cliparts/di6/XM4/di6XM4xeT.png "
+        width="100" height="140" alt="스페이드3">
+         <img src=" https://www.clipartbest.com/cliparts/McL/Mxo/McLMxo57i.png    "
+        width="100" height="140" alt="스페이드7">
+    </div>
+    <script>
+        let imgArray = document.getElementsByTagName("img");
+        for ( let i=0; i<imgArray.length; i++){
+            let obj = imgArray[i];
+            obj.style.zIndex = i;
+            obj.style.left= "10px";
+            obj.style.top= "20px";
+            obj.onclick= shuffle;
+        }
+        function shuffle(){
+            for (let i=0;i<imgArray.length;i++){
+                let obj = imgArray[i];
+                obj.style.zIndex++;
+                obj.style.zIndex%= imgArray.length;
+            }
+        }
+    </script>
+</body>
+</html>
