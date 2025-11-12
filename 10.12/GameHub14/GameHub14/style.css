@@ -1,0 +1,851 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #0e141b;
+  color: #e6e6e6;
+}
+
+.navbar {
+  position: relative;              /* 기준점 역할 */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #0a0f14;
+  padding: 1.3rem 2rem;     /* 0.8 : 위 아래 간격 / 2 : 좌 우 간격*/
+  border-bottom: 1px solid #1a2733;
+}
+
+.nav-buttons {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  color: #4cc9f0;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.logo img {
+  width: 30px;
+  height: 30px;
+  margin-right: 8px;
+}
+
+.nav-buttons button {
+  background: #1a2733;
+  border: 1px solid #243447;
+  color: #d4d4d4;
+  padding: 0.4rem 0.9rem;
+  margin-left: 0.5rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.nav-buttons button:hover {
+  background: #4cc9f0;
+  color: #0e141b;
+}
+
+.hero {
+  text-align: center;
+  margin-top: 5rem;
+}
+
+.title {
+  font-size: 3rem;
+  color: #4cc9f0;
+  margin-bottom: 0.5rem;
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  color: #b8c2cc;
+  margin-bottom: 0.3rem;
+}
+
+.hint {
+  font-size: 0.9rem;
+  color: #6c8096;
+  margin-bottom: 2rem;
+}
+
+/* k - 한 줄에 5개가 들어가게 수정 */
+.genre-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(180px, 1fr));
+  gap: 1.2rem;
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* k - 세로길이 1.5->2.5수정 */
+.genre-card {
+  background: #1a2733;
+  border-radius: 10px;
+  padding: 2.5rem 0;
+  text-align: center;
+  color: #4cc9f0;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+  box-shadow: 0 0 8px rgba(76, 201, 240, 0.2);
+}
+
+.genre-card:hover {
+  background: #4cc9f0;
+  color: #0e141b;
+  box-shadow: 0 0 12px rgba(76, 201, 240, 0.6);
+  transform: scale(1.05);
+}
+
+/* 로그인 모달 */
+.modal {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.hidden { display: none !important; }
+
+.modal-content {
+  position: relative;
+  background: #0f1722;
+  padding: 2rem;
+  border-radius: 12px;
+  width: 320px;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(76,201,240,0.3);
+}
+
+.modal-content h2 {
+  color: #4cc9f0;
+  margin-bottom: 0.5rem;
+}
+
+.modal-content label {
+  display: block;
+  text-align: left;
+  margin-top: 1rem;
+  color: #aab7c4;
+  font-size: 0.9rem;
+}
+/* 🎮 Тоглоом нэмэх модальд гүйлгэх боломж нэмэх */
+.modal-content.add-game {
+  max-height: 80vh;     /* дэлгэцийн өндрийн 80% хүртэл */
+  overflow-y: auto;      /* дотор нь scrollbar гарна */
+  padding-right: 0.8rem; /* scrollbar-т дарагдахгүй байлгах */
+}
+
+/* Scrollbar дизайн (сонголт) */
+.modal-content.add-game::-webkit-scrollbar {
+  width: 8px;
+}
+.modal-content.add-game::-webkit-scrollbar-thumb {
+  background: #4cc9f0;
+  border-radius: 6px;
+}
+.modal-content.add-game::-webkit-scrollbar-track {
+  background: #0f1722;
+}
+
+
+.modal-content input {
+  width: 100%;
+  padding: 0.5rem;
+  margin-top: 0.3rem;
+  border: none;
+  border-radius: 6px;
+  background: #1a2733;
+  color: white;
+}
+
+.login-btn {
+  width: 100%;
+  margin-top: 1.2rem;
+  background: linear-gradient(to right, #3a8ef6, #4cc9f0);
+  border: none;
+  border-radius: 6px;
+  padding: 0.6rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.login-btn:hover {
+  opacity: 0.9;
+}
+
+.error-msg {
+  color: #ff5b5b;
+  font-size: 0.85rem;
+  height: 1rem;
+  margin-top: 0.5rem;
+}
+
+.signup-text {
+  font-size: 0.85rem;
+  margin-top: 1rem;
+  color: #aab7c4;
+}
+.signup-text span {
+  color: #4cc9f0;
+  cursor: pointer;
+}
+.signup-text span:hover {
+  text-decoration: underline;
+}
+
+.profile {
+  position: relative;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  color: #4cc9f0;
+  font-weight: bold;
+}
+
+.profile-dropdown {
+  position: absolute;
+  top: 35px;
+  right: 0;
+  background: #0f1722;
+  border: 1px solid #1a2733;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(76,201,240,0.3);
+  text-align: left;
+  width: 150px;
+  z-index: 10;
+}
+
+.profile-dropdown p {
+  padding: 0.6rem 1rem;
+  margin: 0;
+  color: #e6e6e6;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.profile-dropdown p:hover {
+  background: #1a2733;
+  color: #4cc9f0;
+}
+/* 프로필 모달 넓이 조정 */
+#profileModal .modal-content {
+  width: 420px; /* 기존 320px보다 넓게 */
+  max-width: 90%;
+}
+
+/*닫기 버튼 스타일 추가*/
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 1.5rem;
+  color: #4cc9f0;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.close-btn:hover {
+  color: #ff5b5b;
+  transform: scale(1.1);
+}
+
+.modal-actions button {
+  flex: 1;
+  border: none;
+  border-radius: 8px;
+  padding: 0.6rem 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+/* 파란 등록 버튼 (기존 login-btn 대체) */
+.modal-actions .submit-btn {
+  background: linear-gradient(to right, #3a8ef6, #4cc9f0);
+  color: white;
+  box-shadow: 0 0 8px rgba(76,201,240,0.3);
+}
+.modal-actions .submit-btn:hover {
+  filter: brightness(1.1);
+}
+
+/* 🔴 빨간 취소 버튼 */
+.modal-actions .cancel-btn {
+  background: linear-gradient(to right, #f25c5c, #ff7b7b);
+  color: #fff;
+  box-shadow: 0 0 8px rgba(255,90,90,0.25);
+}
+.modal-actions .cancel-btn:hover {
+  filter: brightness(1.1);
+}
+
+/* ================== k - 검색창 / 검색 결과 스타일(1106-목) ================== */
+
+/* === Search Bar === */
+.search {
+  position: absolute;
+  left: 50%;                       /* 가로 기준 가운데 */
+  transform: translateX(-50%);     /* 자기 너비의 절반만큼 왼쪽 이동 → 완전 중앙 */
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 600px;                    /* 검색창 너비 (원하면 조절 가능) */
+  max-width: 80%;
+  justify-content: center;
+}
+
+.search-input {
+  flex: 1;
+  background: #0f1722;
+  border: 1px solid #1a2733;
+  color: #e6e6e6;
+  padding: 0.55rem 0.8rem;
+  border-radius: 8px;
+  outline: none;
+}
+.search-input:focus {
+  border-color: #4cc9f0;
+  box-shadow: 0 0 0 2px rgba(76, 201, 240, 0.15);
+}
+.search-btn {
+  background: #1a2733;
+  border: 1px solid #243447;
+  color: #d4d4d4;
+  padding: 0.5rem 0.9rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.search-btn:hover { background: #4cc9f0; color: #0e141b; }
+
+/* 자동완성 제안 */
+.suggest {
+  position: absolute;
+  top: 2.7rem; left: 0; right: 0;
+  list-style: none; margin: 0; padding: 0.4rem;
+  background: #0f1722; border: 1px solid #1a2733; border-radius: 8px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.35);
+  max-height: 260px; overflow-y: auto; z-index: 30;
+}
+.suggest li {
+  padding: 0.55rem 0.6rem; border-radius: 6px; color: #cfd8e3; cursor: pointer;
+}
+.suggest li:hover { background: #1a2733; color: #4cc9f0; }
+
+/* === Search Results (same-page) === */
+.results {
+  width: 90%;
+  max-width: 1200px;
+  margin: 3rem auto 4rem;
+}
+.results-title { color: #4cc9f0; margin-bottom: 1rem; font-size: 1.4rem; }
+.results-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(180px, 1fr));
+  gap: 1.2rem;
+}
+@media (max-width: 1200px) { .results-grid { grid-template-columns: repeat(4, 1fr); } }
+@media (max-width: 900px)  { .results-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 640px)  { .results-grid { grid-template-columns: repeat(2, 1fr); } }
+
+.game-card {
+  background: #1a2733; border: 1px solid #243447; border-radius: 12px; padding: 0.9rem;
+  box-shadow: 0 0 8px rgba(76, 201, 240, 0.12); transition: 0.2s;
+}
+.game-card:hover { transform: translateY(-2px); box-shadow: 0 0 16px rgba(76, 201, 240, 0.3); }
+.game-title { font-weight: 700; color: #e6e6e6; margin: 0 0 0.35rem; }
+.game-meta { font-size: 0.85rem; color: #aab7c4; margin: 0 0 0.4rem; }
+.badges { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+.badge {
+  background: #0f1722; color: #4cc9f0; border: 1px solid #1a2733;
+  font-size: 0.75rem; padding: 0.15rem 0.45rem; border-radius: 999px;
+}
+.results-empty { color: #aab7c4; margin-top: 1rem; }
+
+
+/* 검색결과 스타일 */
+/* ======= 검색 결과 그리드 ======= */
+#resultsGrid.gh-grid,
+.gh-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+@media (max-width: 1200px) {
+  .gh-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 720px) {
+  .gh-grid { grid-template-columns: 1fr; }
+}
+
+/* ======= 카드 ======= */
+.gh-card {
+  background: #0a0f14;
+  border: 1px solid #1a2733;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0,0,0,.25);
+  transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+  display: flex;
+  flex-direction: column;
+}
+.gh-card:hover {
+  transform: translateY(-2px);
+  border-color: #24425c;
+  box-shadow: 0 12px 28px rgba(0,0,0,.35);
+}
+
+/* 썸네일 */
+.gh-thumb {
+  position: relative;
+  aspect-ratio: 16/9;
+  background: #0f141a;
+}
+.gh-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display:block;
+}
+.gh-thumb-placeholder {
+  position:absolute; inset:0;
+  background:
+    radial-gradient(60% 60% at 50% 40%, rgba(255,255,255,.06), transparent 60%),
+    linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,0) 60%);
+}
+.gh-thumb-overlay {
+  position:absolute; inset:0;
+  background: linear-gradient( to bottom, rgba(0,0,0,0) 40%, rgba(0,0,0,.35) 100%);
+  pointer-events:none;
+}
+
+/* 본문 */
+.gh-body { padding: 18px; display:flex; flex-direction:column; gap: 10px; }
+.gh-title {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #d8e9f6;
+  letter-spacing: 0.2px;
+}
+.gh-meta {
+  margin: 0;
+  color: #8aa6bf;
+  font-size: .9rem;
+}
+
+/* 배지 */
+.gh-badges { display:flex; gap:8px; flex-wrap:wrap; }
+.badge {
+  display:inline-flex; align-items:center;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: #133043;
+  color: #9fd3ff;
+  border: 1px solid #1a4a66;
+  font-size: .78rem;
+}
+.badge-ghost {
+  background: rgba(46, 90, 120, 0.15);
+  color: #9cc8e6;
+  border-color: rgba(80,140,180,.35);
+}
+
+/* 설명 */
+.gh-desc {
+  margin: 4px 0 0;
+  color: #c1d3e4;
+  opacity: .9;
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* 통계 */
+.gh-stats {
+  display:flex; align-items:center; gap:14px;
+  margin-top: 4px;
+  color: #cfe7ff;
+}
+.gh-stats .star::before {
+  content: "★";
+  margin-right: 6px;
+}
+.gh-stats .likes::before {
+  content: "♥";
+  margin-right: 6px;
+}
+
+/* 액션 버튼 */
+.gh-actions {
+  display:flex; gap:12px; margin-top: 8px;
+}
+.btn {
+  appearance: none; border: 1px solid transparent;
+  border-radius: 12px; padding: 10px 14px;
+  background: #102231; color: #e6f2ff;
+  font-weight: 600; cursor: pointer;
+  transition: background .15s ease, border-color .15s ease, transform .05s ease;
+}
+.btn:hover { background:#153249; }
+.btn:active { transform: translateY(1px); }
+.btn-outline {
+  background: transparent; border-color:#335a78; color:#cfe7ff;
+}
+.btn-outline:hover { background: rgba(51,90,120,.18); }
+.btn-ghost {
+  background: rgba(255,255,255,.04); border-color: rgba(255,255,255,.08);
+}
+
+/* 게임 등록 */
+.add-game {
+  width: 600px;
+  background: #0f1722;
+  padding: 2rem;
+  border-radius: 12px;
+  color: #e6e6e6;
+  box-shadow: 0 0 20px rgba(76,201,240,0.3);
+}
+
+.add-game label {
+  display: block;
+  margin-top: 1rem;
+  color: #aab7c4;
+}
+
+.add-game input[type="text"],
+.add-game input[type="number"],
+.add-game textarea {
+  width: 100%;
+  background: #1a2733;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 0.6rem;
+  margin-top: 0.3rem;
+}
+
+.genre-options, .tag-options {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.4rem 1rem;
+  margin-top: 0.5rem;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1.8rem;
+}
+
+.add-game-btn {
+  background: #1a2733;
+  border: 1px solid #243447;
+  color: #4cc9f0;
+  padding: 0.5rem 1rem;
+  margin-right: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+   position: relative;
+  z-index: 20;
+}
+.add-game-btn:hover {
+  background: #4cc9f0;
+  color: #0e141b;
+}
+
+/*게임 등록창 전용 장르 디자인 11/09*/
+.add-genre-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 한 줄에 두 개 */
+  border: 1px solid #1a2733;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-top: 0.6rem;
+}
+
+/* 각 칸 */
+.add-genre-grid label {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.6rem;
+  padding: 0.9rem 1rem;
+  background: #0f1722;
+  font-size: 1rem;
+  color: #cfd8e3;
+  cursor: pointer;
+  transition: 0.15s;
+  border-bottom: 1px solid #1a2733;
+  border-right: 1px solid #1a2733;
+}
+
+/* 오른쪽 경계 제거 */
+.add-genre-grid label:nth-child(2n) {
+  border-right: none;
+}
+/* 마지막 행 경계 제거 */
+.add-genre-grid label:nth-last-child(-n+2) {
+  border-bottom: none;
+}
+
+.add-genre-grid label:hover {
+  background: #13202e;
+  color: #4cc9f0;
+}
+
+/* 네모 체크박스 */
+.add-genre-grid input[type="checkbox"] {
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border: 2px solid #4cc9f0;
+  border-radius: 4px;
+  background: transparent;
+  transition: 0.2s;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.add-genre-grid input[type="checkbox"]:checked {
+  background: #4cc9f0;
+  box-shadow: 0 0 6px rgba(76,201,240,0.5);
+}
+
+/* 🌗 Light Mode Styles */
+body.light-mode {
+  background: #f2f6fb;
+  color: #0e141b;
+}
+
+/* Навигац */
+body.light-mode nav,
+body.light-mode .navbar {
+  background: #ffffff;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+body.light-mode .logo {
+  color: #1a2733;
+}
+
+body.light-mode .nav-buttons button,
+body.light-mode .search-btn {
+  background: #e4e7eb;
+  color: #222;
+  border-color: #bbb;
+}
+
+body.light-mode .nav-buttons button:hover,
+body.light-mode .search-btn:hover {
+  background: #4cc9f0;
+  color: #fff;
+}
+
+/* Картуудын фон */
+body.light-mode .gh-card {
+  background: #fff;
+  border-color: #d0d7de;
+  color: #111;
+}
+body.light-mode .gh-title {
+  color: #0d253f;
+}
+body.light-mode .gh-desc {
+  color: #333;
+}
+
+/* Жанрын карт */
+body.light-mode .genre-card {
+  background: #e9eef2;
+  color: #1a2733;
+}
+body.light-mode .genre-card:hover {
+  background: #4cc9f0;
+  color: #fff;
+}
+
+/* Модаль цонх */
+body.light-mode .modal-content {
+  background: #fff;
+  color: #000;
+}
+
+.profile-info {
+  background: #1a2733;
+  border-radius: 10px;
+  padding: 1rem;
+  margin: 1.2rem 0;
+  text-align: left;
+  color: #e6e6e6;
+  line-height: 1.6;
+}
+.profile-info strong {
+  color: #4cc9f0;
+  margin-right: 0.4rem;
+}
+.profile-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.6rem;
+  margin-top: 1.4rem;
+}
+
+.profile-actions .delete-btn {
+  background: linear-gradient(to right, #f25c5c, #ff7b7b);
+  border: none;
+  border-radius: 6px;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 0.6rem 1rem;
+  transition: 0.2s;
+}
+.profile-actions .delete-btn:hover {
+  filter: brightness(1.1);
+}
+
+.nickname-edit {
+  margin-top: 1.2rem;
+}
+.nickname-edit input {
+  width: 100%;
+  background: #1a2733;
+  border: 1px solid #243447;
+  color: white;
+  border-radius: 8px;
+  padding: 0.6rem;
+  margin-bottom: 0.8rem;
+}
+.nickname-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+/* ======================== 프로필 버튼 통일 (우선순위 적용용) ======================== */
+#profileModal .modal-content {
+  width: 420px;
+  max-width: 90%;
+}
+
+.profile-actions,
+.nickname-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  gap: 0.8rem;
+  margin-top: 1.4rem;
+}
+
+.profile-actions button,
+.nickname-actions button {
+  flex: 1;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 0.7rem 1rem;
+  transition: 0.2s;
+}
+
+/* 파란 버튼 */
+.profile-actions .login-btn,
+.nickname-actions .login-btn {
+  background: linear-gradient(to right, #3a8ef6, #4cc9f0);
+  color: #fff;
+}
+.profile-actions .login-btn:hover,
+.nickname-actions .login-btn:hover {
+  opacity: 0.9;
+}
+
+/* 빨간 버튼 (회원 탈퇴 / 취소) */
+.profile-actions .delete-btn,
+.nickname-actions .cancel-btn {
+  background: linear-gradient(to right, #f25c5c, #ff7b7b);
+  color: #fff;
+}
+.profile-actions .delete-btn:hover,
+.nickname-actions .cancel-btn:hover {
+  filter: brightness(1.1);
+}
+/* ===================================================
+   프로필 모달 버튼 통일 / 전체 폭 정렬 (확정 버전)
+=================================================== */
+.profile-modal {
+  width: 440px;
+  max-width: 95%;
+}
+
+/* 버튼 컨테이너 정렬 */
+.profile-actions,
+.nickname-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  gap: 0.8rem;
+  margin-top: 1.2rem;
+}
+
+/* 공통 버튼 */
+.action-btn {
+  flex: 1;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+/* 색상 통일 */
+.edit-btn,
+.save-btn {
+  background: linear-gradient(to right, #3a8ef6, #4cc9f0);
+  color: white;
+}
+.edit-btn:hover,
+.save-btn:hover {
+  filter: brightness(1.1);
+}
+
+.delete-btn,
+.cancel-btn {
+  background: linear-gradient(to right, #f25c5c, #ff7b7b);
+  color: white;
+}
+.delete-btn:hover,
+.cancel-btn:hover {
+  filter: brightness(1.1);
+}
+
+/* 입력창 정렬 */
+.nickname-edit {
+  margin-top: 1.2rem;
+}
+.nickname-edit input {
+  width: 100%;
+  background: #1a2733;
+  border: 1px solid #243447;
+  color: white;
+  border-radius: 8px;
+  padding: 0.6rem;
+  margin-bottom: 0.8rem;
+}

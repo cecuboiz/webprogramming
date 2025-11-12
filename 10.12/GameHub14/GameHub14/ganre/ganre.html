@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>장르별 게임 | GameHub</title>
+  <!-- 상위 폴더의 style.css 참조 -->
+  <link rel="stylesheet" href="ganre.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.min.css">
+</head>
+<body class="search-page">
+  <header class="navbar">
+    <div class="logo" onclick="location.href='../index.html'">
+      <i class="ri-game-fill"></i>
+      <p>GameHub</p>
+    </div>
+    <div class="nav-buttons">
+      <button onclick="location.href='../index.html'">🏠 홈으로</button>
+    </div>
+  </header>
+
+  <main class="hero">
+    <h1 class="title" id="genreTitle">🎮 장르별 게임</h1>
+    <p class="subtitle" id="genreSubtitle">선택한 장르의 게임이 표시됩니다.</p>
+  </main>
+
+  <section id="genreResults" class="results">
+    <div class="results-grid" id="resultsGrid"></div>
+    <p class="results-empty hidden" id="resultsEmpty">해당 장르의 게임이 없어요 😅</p>
+  </section>
+
+  <!-- 상위 폴더의 script.js 참조 -->
+  <script src="../script.js"></script>
+  <script>
+  window.addEventListener("load", () => {
+    const params = new URLSearchParams(window.location.search);
+    const genre = params.get("genre");
+    const titleEl = document.getElementById("genreTitle");
+    const subEl = document.getElementById("genreSubtitle");
+
+    if (genre) {
+      titleEl.textContent = `🎯 ${genre} 장르 게임`;
+      subEl.textContent = `${genre} 장르의 인기 게임을 만나보세요.`;
+      showGenreGames(genre);
+    }
+  });
+
+  function showGenreGames(genre) {
+  const games = JSON.parse(localStorage.getItem("games") || "[]");
+  const normalized = genre.toLowerCase();
+
+  // ✅ 장르 필터 (배열/문자열 모두 지원)
+  let filtered;
+
+if (genre === "전체") {
+  // ✅ 전체 보기 선택 시 모든 게임 보여주기
+  filtered = games;
+} else {
+  const normalized = genre.toLowerCase();
+  filtered = games.filter(g => {
+    const genres = Array.isArray(g.genres)
+      ? g.genres
+      : (g.genre ? [g.genre] : []);
+    return (
+      genres.some(val => val?.toLowerCase?.() === normalized) ||
+      (g.tags || []).some(t => t?.toLowerCase?.() === normalized)
+    );
+  });
+}
+
+
+
+  const grid = document.getElementById("resultsGrid");
+  const empty = document.getElementById("resultsEmpty");
+  grid.innerHTML = "";
+
+  if (!filtered.length) {
+    empty.classList.remove("hidden");
+    return;
+  }
+  empty.classList.add("hidden");
+
+  // 검색 카드 스타일처럼 렌더
+  const fmt = (n) => n?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+
+  filtered.forEach(g => {
+    const card = document.createElement("article");
+    card.className = "gh-card";
+
+    // ✅ 이미지: base64(g.image) → URL(g.cover)
+    const imageSrc = g.image || g.cover || "";
+    const finalImageSrc = imageSrc.startsWith("Images/") ? `../${imageSrc}` : imageSrc;
+
+    const cover = finalImageSrc
+      ? `<img src="${finalImageSrc}" alt="${g.title} 커버 이미지" />`
+      : "";
+    
+    card.innerHTML = `
+      <div class="gh-thumb">
+        ${cover}
+        <div class="gh-thumb-overlay"></div>
+        ${!cover ? `<div class="gh-thumb-placeholder" aria-hidden="true"></div>` : ""}
+      </div>
+
+      <div class="gh-body">
+        <h3 class="gh-title">${g.title}</h3>
+        <p class="gh-meta">${g.studio || "-"} · ${g.year || "-"}</p>
+
+        <div class="gh-badges">
+          <span class="badge">${Array.isArray(g.genres) ? g.genres[0] : g.genre || "-"}</span>
+          ${(g.tags || []).slice(0, 2).map(t => `<span class="badge badge-ghost">${t}</span>`).join("")}
+        </div>
+
+        <p class="gh-desc">${g.desc || ""}</p>
+
+        <p class="gh-author">등록자: ${getUserNameByEmail(g.creator)}</p>
+        
+        <div class="gh-stats">
+          <span class="star" title="평점">${g.rating?.toFixed ? g.rating.toFixed(1) : (g.rating || "-")}</span>
+          <span class="likes" title="좋아요 수">${fmt(g.likes || 0)}</span>
+        </div>
+
+        <div class="gh-actions">
+          <button class="btn btn-ghost">👍 추천하기</button>
+          <a class="btn btn-outline" href="../game/game.html?id=${g.id}">👁️ 자세히</a>
+        </div>
+      </div>
+    `;
+    grid.appendChild(card);
+  });
+}
+  
+</script>
+</body>
+</html>
