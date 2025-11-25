@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>시설 추천 | 올림핏 가이드</title>
+  <link rel="stylesheet" href="./css/facilities.css" />
+</head>
+<body>
+  <!-- <header class="main-header">
+    <a href="index.html" class="logo">올림픽 스포츠센터 맞춤 추천</a>
+    <nav class="main-nav">
+        <a href="index.html">메인</a>
+        <a href="course.html">강좌 추천</a>
+        <a href="facilities.html" class="active">시설 추천</a>
+        <a href="stats.html">이용현황/통계</a>
+    </nav>
+</header> -->
+
+    <header class="main-header">
+    <a href="index.html" class="logo">올림핏 가이드</a>
+
+    <nav class="main-nav">
+      <a href="index.html">메인</a>
+      <a href="course.html">강좌 추천</a>
+      <a href="facilities.html" class="active">시설 추천</a>
+      <a href="stats.html">이용현황/통계</a>
+    </nav>
+
+    <!-- ✅ 모바일용 햄버거 버튼 추가 -->
+    <button class="nav-toggle" type="button" aria-label="메뉴 열기">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </header>
+
+  <main class="container">
+    <!-- 필터 영역 -->
+    <section class="filter-panel">
+      <h1>시설 맞춤 추천</h1>
+      <p>생활권, 운동 종류, 이용 시간대를 선택하면 추천해줄게요.</p>
+
+      <div class="filter-row">
+        <label for="regionSelect">생활권/지역</label>
+        <select id="regionSelect">
+          <option value="">전체</option>
+          <option value="송파">송파구/올림픽공원</option>
+          <option value="분당">분당</option>
+          <option value="일산">일산</option>
+        </select>
+      </div>
+
+      <div class="filter-row">
+        <label for="sportSelect">운동 종류</label>
+        <select id="sportSelect">
+          <option value="">전체</option>
+          <option value="swimming">수영</option>
+          <option value="gym">헬스/피트니스</option>
+          <option value="yoga">요가/필라테스</option>
+          <option value="badminton">배드민턴</option>
+        </select>
+      </div>
+
+      <div class="filter-row">
+        <label for="daySelect">이용 요일</label>
+        <select id="daySelect">
+          <option value="weekday">평일</option>
+          <option value="weekend">주말</option>
+        </select>
+      </div>
+
+      <!-- 이용 예정 날짜 -->
+      <div class="filter-row">
+        <label for="useDate">이용 예정 날짜</label>
+        <input type="date" id="useDate" />
+      </div>
+
+      <div class="filter-row">
+        <label for="timeSelect">이용 시간대</label>
+        <select id="timeSelect">
+          <option value="morning">오전</option>
+          <option value="afternoon">오후</option>
+          <option value="evening">저녁</option>
+        </select>
+      </div>
+
+      <div class="filter-row">
+        <label for="crowdSelect">혼잡도 선호</label>
+        <select id="crowdSelect">
+          <option value="calm">한가한 곳 선호</option>
+          <option value="normal">보통</option>
+          <option value="hot">인기 많은 곳도 괜찮음</option>
+        </select>
+      </div>
+
+      <button id="recommendBtn">추천 받기</button>
+    </section>
+
+    <!-- 추천 결과 -->
+    <section class="result-panel">
+      <h2>추천 결과</h2>
+      <div id="resultContainer" class="result-container">
+        <!-- JS로 카드가 들어갈 자리 -->
+      </div>
+    </section>
+    <!-- <section id="holiday-test">
+      <h2>공휴일 조회 (테스트)</h2>
+
+      <div class="holiday-controls">
+        <label>
+          연도:
+          <input id="holiday-year" type="number" value="2025" min="2000" max="2100">
+        </label>
+        <label>
+          월:
+          <input id="holiday-month" type="number" value="1" min="1" max="12">
+        </label>
+        <button id="holiday-load-btn">공휴일 불러오기</button>
+      </div>
+
+      <ul id="holiday-list"></ul>
+    </section>
+
+    <section class="center-api-section">
+      <h2>공식 센터 정보 (KCISA API)</h2>
+      <p class="center-api-desc">
+        문화공공데이터포털(KCISA)의 올림픽공원 스포츠센터 정보를 불러옵니다.
+      </p>
+      <ul id="center-info-list"></ul>
+    </section>
+    <section class="rental-api-section">
+      <h2>올림픽공원 대관 일정 (API)</h2>
+      <p class="rental-api-desc">
+        data.go.kr 올림픽공원 대관 정보를 불러와서, 최근 대관 일정 일부를 보여줍니다.
+      </p>
+      <ul id="rental-list"></ul>
+    </section> -->
+  </main>
+
+  <footer class="main-footer">
+    <p>© 2025 한국체육산업개발 공공데이터 활용 프로젝트</p>
+  </footer>
+
+  <script src="./js/facilities.js"></script>
+</body>
+</html>
