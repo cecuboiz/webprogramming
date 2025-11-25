@@ -1,0 +1,187 @@
+/* 기본 스타일 */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background-color: #f5f7fb;
+  color: #222;
+}
+
+/* 헤더 */
+.main-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 24px;
+  background: #0b4da2;
+  color: white;
+}
+
+.logo {
+  text-decoration: none;   /* 링크 밑줄 제거 */
+  color: inherit;          /* 글자색은 기존 색 유지 */
+  display: flex;           /* 원래 flex였으면 유지해도 OK */
+  align-items: center;
+  font-weight: 700;
+}
+
+.main-nav a {
+  color: white;
+  margin-left: 16px;
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+
+.main-nav a.active {
+  font-weight: 700;
+  border-bottom: 2px solid #ffe066;
+}
+
+/* 레이아웃 */
+.container {
+  max-width: 1100px;
+  margin: 24px auto 40px;
+  display: grid;
+  grid-template-columns: minmax(260px, 320px) 1fr;
+  gap: 24px;
+  padding: 0 16px;
+}
+
+/* 필터 패널 */
+.filter-panel {
+  background: white;
+  padding: 20px 18px;
+  border-radius: 16px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+}
+
+.filter-panel h1 {
+  font-size: 1.3rem;
+  margin-bottom: 4px;
+}
+
+.filter-panel p {
+  font-size: 0.9rem;
+  color: #555;
+  margin-bottom: 14px;
+}
+
+.filter-row {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+
+.filter-row label {
+  font-size: 0.85rem;
+  margin-bottom: 4px;
+}
+
+.filter-row select {
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid #d0d4e4;
+  font-size: 0.9rem;
+}
+
+#recommendBtn {
+  width: 100%;
+  margin-top: 10px;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  background: #0b4da2;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+#recommendBtn:hover {
+  background: #083976;
+}
+
+/* 결과 패널 */
+.result-panel {
+  background: white;
+  padding: 20px 18px;
+  border-radius: 16px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+}
+
+.result-panel h2 {
+  font-size: 1.2rem;
+  margin-bottom: 12px;
+}
+
+.result-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 14px;
+}
+
+/* 카드 */
+.facility-card {
+  border-radius: 14px;
+  padding: 14px 12px;
+  border: 1px solid #e0e3f0;
+  background: #fafbff;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.facility-name {
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.facility-meta {
+  font-size: 0.85rem;
+  color: #555;
+}
+
+.chip {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  margin-right: 4px;
+}
+
+/* 혼잡도 색상 예시 */
+.chip-low {
+  background: #e3f8e6;
+}
+
+.chip-medium {
+  background: #fff4d6;
+}
+
+.chip-high {
+  background: #ffe3e3;
+}
+
+.reason-text {
+  font-size: 0.8rem;
+  color: #444;
+  margin-top: 4px;
+}
+
+/* 푸터 */
+.main-footer {
+  text-align: center;
+  font-size: 0.8rem;
+  color: #777;
+  padding-bottom: 16px;
+}
+
+/* 반응형 */
+@media (max-width: 768px) {
+  .container {
+    grid-template-columns: 1fr;
+  }
+}
