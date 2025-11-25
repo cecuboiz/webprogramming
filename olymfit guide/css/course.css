@@ -1,0 +1,320 @@
+/* ===== 전체 공통 레이아웃 ===== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background-color: #f5f7fb;
+  color: #222;
+}
+
+/* ===== 헤더 - facilities.css와 동일 ===== */
+.main-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 24px;
+  background: #0b4da2;
+  color: white;
+}
+
+.logo {
+  text-decoration: none;   /* 링크 밑줄 제거 */
+  color: inherit;          /* 글자색은 기존 색 유지 */
+  display: flex;           /* 원래 flex였으면 유지해도 OK */
+  align-items: center;
+  font-weight: 700;
+}
+
+/* 🔧 네비게이션 컨테이너를 flex로 (버튼을 가로 정렬) */
+.main-nav {
+  display: flex;
+  align-items: center;
+}
+
+.main-nav a {
+  color: white;
+  margin-left: 16px;
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+
+.main-nav a.active {
+  font-weight: 700;
+  border-bottom: 2px solid #ffe066;
+}
+
+/* 🔔 모바일용 햄버거 버튼 (기본은 숨김) */
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-left: 12px;
+  padding: 4px;
+}
+
+/* 햄버거 막대 3줄 */
+.nav-toggle span {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background-color: #ffffff;
+  margin: 3px 0;
+  border-radius: 999px;
+}
+
+/* ===== 페이지 기본 패딩 ===== */
+.page {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 20px 16px 40px;
+}
+
+/* ===== 상단 소개 ===== */
+.intro {
+  text-align: center;
+  padding: 24px 12px 16px;
+}
+
+.intro h1 {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+}
+
+.intro p {
+  color: #555;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* ===== 필터 섹션 ===== */
+.filter-section {
+  margin-top: 24px;
+  padding: 20px;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+}
+
+.filter-section h2 {
+  font-size: 1.2rem;
+  margin-bottom: 16px;
+}
+
+.filter-form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px 20px;
+}
+
+.form-row {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 0.9rem;
+}
+
+.form-row label {
+  font-weight: 600;
+  color: #374151;
+}
+
+.form-row select {
+  padding: 8px 10px;
+  border-radius: 10px;
+  border: 1px solid #d1d5db;
+  background-color: #f9fafb;
+  font-size: 0.9rem;
+}
+
+.form-row select:focus {
+  outline: 2px solid #6366f1;
+  outline-offset: 1px;
+  background-color: #fff;
+}
+
+/* 버튼 */
+.submit-btn {
+  grid-column: 1 / -1;
+  margin-top: 8px;
+  padding: 10px 14px;
+  font-size: 0.95rem;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  background: linear-gradient(135deg, #4f46e5, #06b6d4);
+  color: #fff;
+  font-weight: 600;
+}
+
+.submit-btn:hover {
+  opacity: 0.9;
+}
+
+/* ===== 결과 섹션 ===== */
+.result-section {
+  margin-top: 26px;
+}
+
+.result-section h2 {
+  font-size: 1.2rem;
+  margin-bottom: 6px;
+}
+
+.result-info {
+  font-size: 0.9rem;
+  color: #6b7280;
+  margin-bottom: 12px;
+}
+
+/* 강좌 카드 리스트 */
+.course-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+/* 강좌 카드 */
+.course-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 14px 14px 12px;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.course-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 6px;
+}
+
+.course-title {
+  font-size: 0.98rem;
+  font-weight: 700;
+}
+
+.course-center {
+  font-size: 0.75rem;
+  padding: 3px 7px;
+  border-radius: 999px;
+  background-color: #eef2ff;
+  color: #4338ca;
+}
+
+.course-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.tag {
+  font-size: 0.7rem;
+  padding: 3px 7px;
+  border-radius: 999px;
+  background-color: #f3f4f6;
+  color: #374151;
+}
+
+.tag.goal {
+  background-color: #ecfdf5;
+  color: #047857;
+}
+
+.tag.time {
+  background-color: #eff6ff;
+  color: #1d4ed8;
+}
+
+.tag.age {
+  background-color: #fef3c7;
+  color: #92400e;
+}
+
+.tag.weather {
+  background-color: #e0f2fe;
+  color: #0369a1;
+}
+
+.course-desc {
+  font-size: 0.8rem;
+  color: #4b5563;
+  margin-top: 4px;
+  line-height: 1.5;
+}
+
+/* 풋터 */
+.site-footer {
+  text-align: center;
+  padding: 18px 12px 24px;
+  font-size: 0.75rem;
+  color: #9ca3af;
+}
+
+/* ===== 반응형 (모바일) ===== */
+/* ===== 반응형 (모바일) ===== */
+@media (max-width: 768px) {
+  .page {
+    padding-top: 16px;
+  }
+
+  /* ✅ 헤더: 햄버거 드롭다운 형태 (facilities/stats와 동일 패턴) */
+  .main-header {
+    position: relative;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 16px;
+  }
+
+  .logo {
+    flex: 0 0 auto;
+    font-size: 1rem;
+  }
+
+  /* 햄버거 보이게 */
+  .nav-toggle {
+    display: block;
+  }
+
+  /* 기본: 메뉴 숨김 + 헤더 아래 드롭다운 */
+  .main-nav {
+    display: none;
+    position: absolute;
+    top: 100%;          /* 헤더 바로 아래 */
+    left: 0;
+    width: 100%;
+    background: #0b4da2;
+    padding: 8px 20px 12px;
+    flex-direction: column;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    z-index: 100;
+  }
+
+  .main-nav a {
+    display: block;
+    margin: 4px 0;
+    font-size: 0.95rem;
+  }
+
+  /* ✅ .nav-open이 붙으면 메뉴 펼치기 */
+  .main-header.nav-open .main-nav {
+    display: flex;
+  }
+
+  /* 기존 레이아웃 반응형 유지 */
+  .filter-form {
+    grid-template-columns: 1fr;
+  }
+
+  .course-list {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,258 @@
+/* 기본 스타일 */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background-color: #f5f7fb;
+  color: #222;
+}
+
+/* 헤더 */
+/* 헤더 */
+.main-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 24px;
+  background: #0b4da2;
+  color: white;
+}
+
+.logo {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  align-items: center;
+  font-weight: 700;
+}
+
+/* 네비게이션 */
+.main-nav {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.main-nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+
+.main-nav a.active {
+  font-weight: 700;
+  border-bottom: 2px solid #ffe066;
+}
+
+/* 모바일용 햄버거 버튼 기본은 숨김 */
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-left: 12px;
+  padding: 4px;
+}
+
+/* 햄버거 막대 3줄 */
+.nav-toggle span {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background-color: #ffffff;
+  margin: 3px 0;
+  border-radius: 999px;
+}
+
+/* 레이아웃 */
+.container {
+  max-width: 1100px;
+  margin: 24px auto 40px;
+  display: grid;
+  grid-template-columns: minmax(260px, 320px) 1fr;
+  gap: 24px;
+  padding: 0 16px;
+}
+
+/* 필터 패널 */
+.filter-panel {
+  background: white;
+  padding: 20px 18px;
+  border-radius: 16px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+}
+
+.filter-panel h1 {
+  font-size: 1.3rem;
+  margin-bottom: 4px;
+}
+
+.filter-panel p {
+  font-size: 0.9rem;
+  color: #555;
+  margin-bottom: 14px;
+}
+
+.filter-row {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+
+.filter-row label {
+  font-size: 0.85rem;
+  margin-bottom: 4px;
+}
+
+.filter-row select 
+.filter-row input[type="date"]{
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid #d0d4e4;
+  font-size: 0.9rem;
+}
+
+#recommendBtn {
+  width: 100%;
+  margin-top: 10px;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  background: #0b4da2;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+#recommendBtn:hover {
+  background: #083976;
+}
+
+/* 결과 패널 */
+.result-panel {
+  background: white;
+  padding: 20px 18px;
+  border-radius: 16px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+}
+
+.result-panel h2 {
+  font-size: 1.2rem;
+  margin-bottom: 12px;
+}
+
+.result-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 14px;
+}
+
+/* 카드 */
+.facility-card {
+  border-radius: 14px;
+  padding: 14px 12px;
+  border: 1px solid #e0e3f0;
+  background: #fafbff;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.facility-name {
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.facility-meta {
+  font-size: 0.85rem;
+  color: #555;
+}
+
+.chip {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  margin-right: 4px;
+}
+
+/* 혼잡도 색상 예시 */
+.chip-low {
+  background: #e3f8e6;
+}
+
+.chip-medium {
+  background: #fff4d6;
+}
+
+.chip-high {
+  background: #ffe3e3;
+}
+
+.reason-text {
+  font-size: 0.8rem;
+  color: #444;
+  margin-top: 4px;
+}
+
+/* 푸터 */
+.main-footer {
+  text-align: center;
+  font-size: 0.8rem;
+  color: #777;
+  padding-bottom: 16px;
+}
+
+/* 반응형 */
+@media (max-width: 768px) {
+  /* 메인 레이아웃 한 칼럼 */
+  .container {
+    grid-template-columns: 1fr;
+  }
+
+  .main-header {
+    position: relative;
+    flex-wrap: nowrap;
+    align-items: center;
+    padding: 12px 16px;
+  }
+
+  .logo {
+    flex: 1;
+    font-size: 1rem;
+  }
+
+  /* 햄버거 보이게 */
+  .nav-toggle {
+    display: block;
+  }
+
+  /* 기본은 메뉴 숨김 + 헤더 아래로 드롭다운 */
+  .main-nav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    background: #0b4da2;
+    padding: 12px 0 16px;
+    gap: 12px;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+  }
+
+  .main-nav a {
+    margin: 0;
+    font-size: 1.05rem;
+  }
+
+  /* .nav-open 이 붙었을 때만 메뉴 펼치기 */
+  .main-header.nav-open .main-nav {
+    display: flex;
+  }
+}
