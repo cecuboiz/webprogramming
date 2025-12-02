@@ -1,0 +1,158 @@
+/* 로그인/회원가입 전용 페이지 공통 스타일 */
+/* 로그인/회원가입 전용 페이지 공통 스타일 */
+.hero.hero--small {
+  position: relative; /* 상단 바 absolute 기준 */
+}
+.hero-topbar {
+  position: absolute;
+  top: 24px;
+  right: 32px;
+  display: flex;
+  align-items: center;
+  gap: 12px; /* 메인 화면 버튼 ↔ 로그인/회원가입 간 간격 */
+}
+.hero-home-link {
+  padding: 8px 16px;
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.5);
+  background: transparent;
+  color: #e5e7eb;
+  font-size: 13px;
+  text-decoration: none;
+  cursor: pointer;
+
+  /* 가운데 정렬용 margin 있으면 무효화 */
+  margin: 0;
+}
+
+.hero-home-link:hover {
+  background: rgba(148, 163, 184, 0.18);
+}
+
+/* 상단 우측에 정렬되는 바 */
+.hero.hero--small .hero-topbar {
+  position: absolute;
+  top: 24px;
+  right: 32px;
+  left: auto;
+  display: flex;
+  align-items: center;
+  gap: 12px; /* 메인 화면 버튼 ↔ 로그인/회원가입 간 간격 */
+}
+
+/* 메인 화면 버튼 */
+.hero.hero--small .hero-home-link {
+  position: relative;      /* 혹시 main.css 에서 absolute 줬어도 덮어쓰기 */
+  transform: none;         /* 가운데 정렬용 transform 제거 */
+  margin: 0;               /* auto 같은 거 제거 */
+
+  padding: 8px 16px;
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.5);
+  background: transparent;
+  color: #e5e7eb;
+  font-size: 13px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.hero.hero--small .hero-home-link:hover {
+  background: rgba(148, 163, 184, 0.18);
+}
+
+.auth-page {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 2rem 1.25rem 3rem;
+  display: flex;
+  justify-content: center;
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 420px;
+  background: #ffffff;
+  border-radius: 1.25rem;
+  padding: 1.8rem 1.6rem 1.6rem;
+  box-shadow: 0 18px 50px rgba(15, 23, 42, 0.12);
+}
+
+.auth-card-title {
+  margin: 0 0 0.4rem;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #111827;
+}
+
+.auth-card-desc {
+  margin: 0 0 1.4rem;
+  font-size: 0.9rem;
+  color: #4b5563;
+  line-height: 1.6;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.auth-label {
+  font-size: 0.8rem;
+  color: #6b7280;
+}
+
+.auth-input {
+  width: 100%;
+  border-radius: 0.8rem;
+  border: 1px solid #d1d5db;
+  padding: 0.55rem 0.75rem;
+  font-size: 0.9rem;
+}
+
+.auth-input:focus {
+  outline: none;
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 1px rgba(79, 70, 229, 0.25);
+}
+
+.auth-submit-btn {
+  margin-top: 0.6rem;
+  width: 100%;
+  border-radius: 0.9rem;
+  padding: 0.7rem 0.8rem;
+  border: none;
+  background: linear-gradient(90deg, #4f46e5, #3b82f6);
+  color: #ffffff;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.auth-submit-btn:hover {
+  opacity: 0.96;
+}
+
+.auth-hint {
+  margin-top: 0.9rem;
+  font-size: 0.75rem;
+  color: #6b7280;
+}
+
+.auth-small-link {
+  display: inline-block;
+  margin-top: 0.6rem;
+  font-size: 0.85rem;
+  color: #4b5563;
+  text-decoration: none;
+}
+
+.auth-small-link:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 640px) {
+  .auth-card {
+    padding: 1.5rem 1.25rem 1.3rem;
+  }
+}

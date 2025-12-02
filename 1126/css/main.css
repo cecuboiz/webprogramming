@@ -1,0 +1,617 @@
+/* 화면 전체 기본값 */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  line-height: 1.5;
+  color: #222;
+}
+
+/* 상단 히어로 영역 */
+.hero {
+  min-height: 100vh; /* 화면 꽉 채우기 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #111;
+  color: #fff;
+}
+
+.hero-inner {
+  text-align: center;
+  padding: 2rem;
+}
+/* 상단 히어로 영역 */
+.hero {
+  min-height: 100vh; /* 화면 꽉 채우기 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #111;
+  color: #fff;
+  position: relative; /* ✅ 우측 상단 auth-area 배치용 */
+}
+
+/* ✅ 우측 상단 로그인 영역 */
+.auth-area {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.85rem;
+}
+
+.auth-welcome {
+  color: #e5e7eb;
+}
+
+.auth-link,
+.auth-logout-btn {
+  border-radius: 999px;
+  padding: 0.35rem 0.9rem;
+  font-size: 0.85rem;
+  border: 1px solid rgba(249, 250, 251, 0.6);
+  background: rgba(15, 23, 42, 0.65);
+  color: #f9fafb;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.auth-link:hover,
+.auth-logout-btn:hover {
+  background: rgba(55, 65, 81, 0.85);
+}
+.auth-name-btn {
+  background: none;
+  border: none;
+  color: #a5b4fc;
+  cursor: pointer;
+  padding: 0;
+  margin: 0 0.1rem;
+  font: inherit;
+}
+
+.auth-name-btn:hover {
+  text-decoration: underline;
+}
+
+.site-title {
+  font-size: 2.4rem;
+  margin-bottom: 1rem;
+}
+
+.site-subtitle {
+  font-size: 1rem;
+  opacity: 0.9;
+  margin-bottom: 2rem;
+}
+
+.scroll-down-btn {
+  display: inline-block;
+  padding: 0.8rem 1.4rem;
+  border-radius: 999px;
+  border: 1px solid #fff;
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+/* 🔽 검색 섹션: 두 번째 화면 세로 중앙에 위치 */
+.search-section {
+  min-height: 100vh;
+  padding: 4rem 1.5rem;
+  max-width: 720px;
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.search-section h2 {
+  font-size: 1.8rem;
+  margin-bottom: 0.8rem;
+}
+
+.search-desc {
+  font-size: 0.95rem;
+  color: #555;
+  margin-bottom: 2rem;
+}
+
+/* 폼 스타일 */
+.search-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.form-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+select {
+  padding: 0.7rem 0.9rem;
+  border-radius: 0.5rem;
+  border: 1px solid #ccc;
+  font-size: 0.95rem;
+}
+
+.search-btn {
+  margin-top: 0.5rem;
+  padding: 0.8rem 1.2rem;
+  border-radius: 0.5rem;
+  border: none;
+  background: #007aff;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.search-btn:hover {
+  opacity: 0.9;
+}
+
+/* 부드러운 스크롤 */
+html {
+  scroll-behavior: smooth;
+}
+.search-btn {
+  margin-top: 0.5rem;
+  padding: 0.8rem 1.2rem;
+  border-radius: 0.5rem;
+  border: none;
+  background: #007aff;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.search-btn:hover {
+  opacity: 0.9;
+}
+
+/* ✅ 내 위치 기반 검색 버튼 */
+.geo-btn {
+  margin-top: 0.5rem;
+  padding: 0.8rem 1.2rem;
+  border-radius: 0.5rem;
+  border: 1px solid #007aff;
+  background: #fff;
+  color: #007aff;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+
+.geo-btn:hover {
+  background: #f0f6ff;
+}
+.auth-area {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+}
+
+.auth-link {
+  text-decoration: none;
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+  border: 1px solid #e5e7eb;
+  color: #374151;
+}
+
+.auth-link.secondary {
+  background: #4f46e5;
+  color: #fff;
+  border-color: #4f46e5;
+}
+
+.auth-welcome {
+  color: #4b5563;
+}
+
+.auth-logout-btn {
+  border: none;
+  background: #f3f4f6;
+  border-radius: 999px;
+  padding: 0.25rem 0.7rem;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+/* FocusFlight 바로가기 카드 */
+
+.focusflight-shortcut {
+  margin-top: 2rem;
+  padding: 1.1rem 1.2rem;
+  border-radius: 1rem;
+  background: #eef2ff;
+  border: 1px solid #e5e7ff;
+}
+
+.focusflight-title {
+  margin: 0 0 0.4rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #111827;
+}
+
+.focusflight-desc {
+  margin: 0 0 0.8rem;
+  font-size: 0.85rem;
+  color: #4b5563;
+  line-height: 1.5;
+}
+
+.focusflight-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.55rem 1.1rem;
+  border-radius: 999px;
+  border: none;
+  background: linear-gradient(90deg, #4f46e5, #3b82f6);
+  color: #ffffff;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.focusflight-btn:hover {
+  opacity: 0.96;
+}
+
+@media (max-width: 640px) {
+  .focusflight-shortcut {
+    padding: 1rem 1rem;
+  }
+}
+
+/* ===== 로그인 / 회원가입 상단 영역 ===== */
+
+.auth-area {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.85rem;
+}
+
+.auth-welcome {
+  color: #e5e7eb;
+}
+
+.auth-link,
+.auth-logout-btn {
+  border-radius: 999px;
+  padding: 0.35rem 0.9rem;
+  font-size: 0.85rem;
+  border: 1px solid rgba(249, 250, 251, 0.65);
+  background: rgba(15, 23, 42, 0.7);
+  color: #f9fafb;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.auth-link-secondary {
+  border-color: rgba(148, 163, 184, 0.9);
+  background: rgba(15, 23, 42, 0.4);
+  color: #e5e7eb;
+}
+
+.auth-link:hover,
+.auth-logout-btn:hover {
+  background: rgba(55, 65, 81, 0.9);
+}
+
+/* 로그인/회원가입 페이지에서 히어로 높이를 조금 줄이기 */
+.hero.hero--small {
+  min-height: 40vh;
+}
+
+.hero-inner.hero-inner--auth {
+  padding-top: 4rem;
+}
+
+/* ✅ 마이페이지(그리고 이후 다른 서브 페이지) 상단 우측 바 */
+.hero-top-bar {
+  position: absolute;
+  top: 1.2rem;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0 2rem;
+  z-index: 10;
+}
+
+/* 공통 "메인 화면" 버튼 */
+.hero-home-link {
+  font-size: 0.85rem;
+  color: #f9fafb;
+  text-decoration: none;
+  padding: 0.35rem 0.9rem;
+  border-radius: 999px;
+  border: 1px solid rgba(249, 250, 251, 0.35);
+  background: rgba(15, 23, 42, 0.7);
+  backdrop-filter: blur(10px);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  cursor: pointer;
+}
+
+.hero-home-link::before {
+  content: "←";
+  font-size: 0.85rem;
+}
+
+.hero-home-link:hover {
+  background: rgba(248, 250, 252, 0.15);
+}
+
+/* 상단바 안에서는 auth-area를 인라인으로 표시 */
+.hero-top-bar .auth-area {
+  position: static;       /* index.html 의 absolute 위치 지정 덮어쓰기 */
+  margin: 0;
+}
+
+/* ================== 푸터 & QR 코드 버튼 ================== */
+
+.main-footer {
+  padding: 2rem 2.5rem;
+  border-top: 1px solid #e5e7eb;
+  background: #f9fafb;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.qr-btn {
+  padding: 0.55rem 1.2rem;
+  border-radius: 999px;
+  border: 1px solid #4f46e5;
+  background: #4f46e5;
+  color: #f9fafb;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(79, 70, 229, 0.25);
+  transition: transform 0.12s ease, box-shadow 0.12s ease,
+    background-color 0.12s ease;
+}
+
+.qr-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 26px rgba(79, 70, 229, 0.35);
+  background: #4338ca;
+}
+
+/* ================== QR 코드 모달 ================== */
+
+.qr-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.6);
+  display: none; /* JS에서 flex로 변경 */
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+}
+
+.qr-modal {
+  background: #f9fafb;
+  border-radius: 1.25rem;
+  padding: 1.5rem 2rem 2rem;
+  max-width: 320px;
+  width: 90%;
+  box-shadow: 0 20px 45px rgba(15, 23, 42, 0.35);
+  position: relative;
+  text-align: center;
+}
+
+.qr-close-btn {
+  position: absolute;
+  top: 0.6rem;
+  right: 0.8rem;
+  border: none;
+  background: transparent;
+  font-size: 1.3rem;
+  cursor: pointer;
+  color: #6b7280;
+}
+
+.qr-close-btn:hover {
+  color: #111827;
+}
+
+.qr-title {
+  margin-top: 0.4rem;
+  margin-bottom: 0.25rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #111827;
+}
+
+.qr-desc {
+  margin: 0;
+  margin-bottom: 1rem;
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+
+.qr-box {
+  margin: 0 auto;
+  width: 180px;
+  height: 180px;
+}
+
+/* ================== 푸터 & QR / 설치 버튼 ================== */
+
+.main-footer {
+  padding: 2rem 2.5rem;
+  border-top: 1px solid #e5e7eb;
+  background: #f9fafb;
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+}
+
+.qr-btn,
+.install-btn {
+  padding: 0.55rem 1.2rem;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: transform 0.12s ease, box-shadow 0.12s ease,
+    background-color 0.12s ease, color 0.12s ease;
+}
+
+/* QR 버튼 (보라색) */
+.qr-btn {
+  border: 1px solid #4f46e5;
+  background: #4f46e5;
+  color: #f9fafb;
+  box-shadow: 0 8px 20px rgba(79, 70, 229, 0.25);
+}
+
+.qr-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 26px rgba(79, 70, 229, 0.35);
+  background: #4338ca;
+}
+
+/* 설치 버튼 (회색 테두리) */
+.install-btn {
+  border: 1px solid #9ca3af;
+  background: #ffffff;
+  color: #111827;
+}
+
+.install-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.15);
+  background: #f3f4f6;
+}
+
+/* ================== QR 코드 모달 (이미 있으면 생략 가능) ================== */
+
+.qr-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.6);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+}
+
+.qr-modal {
+  background: #f9fafb;
+  border-radius: 1.25rem;
+  padding: 1.5rem 2rem 2rem;
+  max-width: 320px;
+  width: 90%;
+  box-shadow: 0 20px 45px rgba(15, 23, 42, 0.35);
+  position: relative;
+  text-align: center;
+}
+
+.qr-close-btn {
+  position: absolute;
+  top: 0.6rem;
+  right: 0.8rem;
+  border: none;
+  background: transparent;
+  font-size: 1.3rem;
+  cursor: pointer;
+  color: #6b7280;
+}
+
+.qr-close-btn:hover {
+  color: #111827;
+}
+
+.qr-title {
+  margin-top: 0.4rem;
+  margin-bottom: 0.25rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #111827;
+}
+
+.qr-desc {
+  margin: 0;
+  margin-bottom: 1rem;
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+
+.qr-box {
+  margin: 0 auto;
+  width: 180px;
+  height: 180px;
+}
+
+/* ==== 로그인/회원가입 상단 우측 메인 버튼 + 로그인 영역 ==== */
+
+/* hero--small 헤더는 상단바 기준이 될 수 있게 relative */
+.hero.hero--small {
+  position: relative;
+}
+
+/* 상단 우측에 붙는 바 */
+.hero-topbar {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  z-index: 10;
+}
+
+/* 메인 화면 버튼 모양 */
+.hero-topbar .hero-home-link {
+  font-size: 0.85rem;
+  color: #f9fafb;
+  text-decoration: none;
+  padding: 0.35rem 0.9rem;
+  border-radius: 999px;
+  border: 1px solid rgba(249, 250, 251, 0.35);
+  background: rgba(15, 23, 42, 0.7);
+  backdrop-filter: blur(10px);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+/* 화살표 아이콘은 그대로 유지 */
+.hero-topbar .hero-home-link::before {
+  content: "←";
+  font-size: 0.85rem;
+}
+
+.hero-topbar .hero-home-link:hover {
+  background: rgba(248, 250, 252, 0.15);
+}
+
+/* hero-topbar 안에서는 auth-area를 절대 위치 말고 인라인으로 */
+.hero-topbar .auth-area {
+  position: static;
+  margin: 0;
+}
