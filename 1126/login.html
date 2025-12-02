@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>StudySpot Finder | 로그인</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./css/main.css" />
+  <link rel="stylesheet" href="./css/auth.css" />
+</head>
+<body>
+  <header class="hero hero--small">
+  <!-- ✅ 상단 우측 영역 -->
+  <div class="hero-topbar">
+    <div id="auth-area" class="auth-area"></div>
+  </div>
+
+  <!-- 가운데 타이틀 영역 -->
+  <div class="hero-inner hero-inner--auth">
+    <h1 class="site-title">StudySpot Finder</h1>
+    <p class="site-subtitle">
+      계정으로 로그인하고 집중 세션을 더 편하게 관리해보세요.
+    </p>
+  </div>
+</header>
+
+  <main class="auth-page">
+    <section class="auth-card">
+      <h2 class="auth-card-title">로그인</h2>
+      <p class="auth-card-desc">
+        가입 시 사용한 <strong>이메일</strong>과 <strong>비밀번호</strong>를 입력해주세요.
+      </p>
+
+      <form id="login-form" class="auth-form">
+        <label class="auth-label" for="login-email">이메일</label>
+        <input
+          type="email"
+          id="login-email"
+          class="auth-input"
+          placeholder="example@domain.com"
+          required
+        />
+
+        <label class="auth-label" for="login-password">비밀번호</label>
+        <input
+          type="password"
+          id="login-password"
+          class="auth-input"
+          placeholder="비밀번호"
+          required
+        />
+
+        <button type="submit" class="auth-submit-btn">
+          로그인하기
+        </button>
+      </form>
+
+      <!-- <p class="auth-hint">
+        ※ 이 프로젝트의 로그인은 <strong>브라우저 localStorage 기반</strong>으로만 동작하며,
+        실제 서비스용이 아닙니다.
+      </p> -->
+
+      <a href="signup.html" class="auth-small-link">아직 계정이 없나요? 회원가입하기 →</a><br />
+      <a href="index.html" class="auth-small-link">← 메인으로 돌아가기</a>
+    </section>
+  </main>
+
+  <script src="./js/auth.js"></script>
+  <script src="./js/login.js"></script>
+</body>
+</html>

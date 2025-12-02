@@ -1,0 +1,33 @@
+{
+  "name": "StudySpot Finder",
+  "short_name": "StudySpot",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#020617",
+  "theme_color": "#4f46e5",
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "주변 공부 장소 찾기",
+      "short_name": "주변 검색",
+      "url": "./index.html#search-section"
+    },
+    {
+      "name": "포커스 플라이트 시작",
+      "short_name": "포커스",
+      "url": "./focus.html"
+    }
+  ]
+}

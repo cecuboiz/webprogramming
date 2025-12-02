@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>StudySpot | 포커스 플라이트</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- 기존 검색 페이지 스타일 재사용 -->
+  <link rel="stylesheet" href="./css/search.css" />
+  <!-- 포커스 페이지 전용 스타일 -->
+  <link rel="stylesheet" href="./css/focus.css" />
+</head>
+<body>
+  <header class="search-header">
+    <h1 class="search-title">포커스 플라이트</h1>
+    <a href="index.html" class="back-link">← 메인으로 돌아가기</a>
+  </header>
+
+  <main class="search-page">
+    <section class="focus-section">
+      <div class="focus-card">
+        <div class="focus-header">
+          <span class="focus-chip">집중 세션</span>
+          <h2 id="focus-place-name">집중할 장소</h2>
+          <p class="focus-address">
+            <span class="detail-address-icon">📍</span>
+            <span id="focus-place-addr">주소 정보 없음</span>
+          </p>
+        </div>
+
+        <div class="focus-flight-info">
+          <div class="flight-row">
+            <span class="flight-label">출발</span>
+            <span class="flight-value" id="flight-departure">--:--</span>
+          </div>
+          <div class="flight-row">
+            <span class="flight-label">도착</span>
+            <span class="flight-value" id="flight-arrival">--:--</span>
+          </div>
+          <div class="flight-row">
+            <span class="flight-label">상태</span>
+            <span class="flight-status" id="flight-status">대기 중</span>
+          </div>
+        </div>
+
+        <div class="focus-timer">
+          <div class="timer-display" id="timer-display">00:00</div>
+          <div class="timer-progress-wrap">
+            <div class="timer-progress-bar" id="timer-progress-bar"></div>
+          </div>
+        </div>
+
+        <div class="focus-controls">
+          <div class="preset-buttons">
+            <button type="button" class="preset-btn" data-min="25">25분</button>
+            <button type="button" class="preset-btn" data-min="50">50분</button>
+            <button type="button" class="preset-btn" data-min="90">90분</button>
+          </div>
+
+          <div class="custom-duration">
+            <label>
+              직접 설정
+              <input type="number" id="custom-minutes" min="5" max="300" value="60" />
+              분
+            </label>
+          </div>
+
+          <div class="focus-main-buttons">
+            <button type="button" id="focus-start-btn" class="focus-btn primary">
+              ✈ 비행 시작
+            </button>
+            <button type="button" id="focus-stop-btn" class="focus-btn ghost" disabled>
+              중단
+            </button>
+          </div>
+        </div>
+
+        <p class="focus-hint">
+          세션이 끝나면 상태가 “착륙 완료 ✨”로 바뀌어요. (알림/소리는 나중에 추가 가능)
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <script src="./js/focus.js"></script>
+</body>
+</html>

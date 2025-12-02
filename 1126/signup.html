@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>StudySpot Finder | 회원가입</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./css/main.css" />
+  <link rel="stylesheet" href="./css/auth.css" />
+</head>
+<body>
+  <header class="hero hero--small">
+  <!-- ✅ 상단 우측 영역 -->
+  <div class="hero-topbar">
+    <div id="auth-area" class="auth-area"></div>
+  </div>
+
+  <!-- 가운데 타이틀 영역 -->
+  <div class="hero-inner hero-inner--auth">
+    <h1 class="site-title">StudySpot Finder</h1>
+    <p class="site-subtitle">
+      간단한 정보를 입력하고 나만의 StudySpot 계정을 만들어보세요.
+    </p>
+  </div>
+</header>
+  
+  <main class="auth-page">
+    <section class="auth-card">
+      <h2 class="auth-card-title">회원가입</h2>
+      <p class="auth-card-desc">
+        닉네임·이메일·비밀번호를 입력하면 바로 로그인 상태로 시작할 수 있어요.
+      </p>
+
+      <form id="signup-form" class="auth-form">
+        <label class="auth-label" for="signup-nickname">닉네임</label>
+        <input
+          type="text"
+          id="signup-nickname"
+          class="auth-input"
+          placeholder="예: 정훈, 공부하는고양이"
+          required
+        />
+
+        <label class="auth-label" for="signup-email">이메일</label>
+        <input
+          type="email"
+          id="signup-email"
+          class="auth-input"
+          placeholder="example@domain.com"
+          required
+        />
+
+        <label class="auth-label" for="signup-password">비밀번호</label>
+        <input
+          type="password"
+          id="signup-password"
+          class="auth-input"
+          placeholder="4자 이상"
+          minlength="4"
+          required
+        />
+
+        <label class="auth-label" for="signup-password2">비밀번호 확인</label>
+        <input
+          type="password"
+          id="signup-password2"
+          class="auth-input"
+          placeholder="한 번 더 입력"
+          minlength="4"
+          required
+        />
+
+        <button type="submit" class="auth-submit-btn">
+          가입하기
+        </button>
+      </form>
+
+      <p class="auth-hint">
+        ※ 입력된 정보는 이 브라우저의 localStorage에만 저장되며,<br />
+        실제 서비스의 회원 정보로 사용되지 않습니다.
+      </p>
+
+      <a href="login.html" class="auth-small-link">이미 계정이 있나요? 로그인하기 →</a><br />
+      <a href="index.html" class="auth-small-link">← 메인으로 돌아가기</a>
+    </section>
+  </main>
+
+  <script src="./js/auth.js"></script>
+  <script src="./js/signup.js"></script>
+</body>
+</html>

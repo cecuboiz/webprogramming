@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>StudySpot Finder | 메인</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./css/main.css" />
+
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#4f46e5" />
+</head>
+<body>
+  <!-- 상단 히어로 영역 -->
+  <header class="hero">
+    <!-- ✅ 우측 상단 로그인 영역 -->
+    <div id="auth-area" class="auth-area"></div>
+
+    <div class="hero-inner">
+      <h1 class="site-title">StudySpot Finder</h1>
+      <p class="site-subtitle">
+        학생들을 위한 도서관·독서실·스터디카페를 한 번에 찾아주는 서비스
+      </p>
+      <a href="#search-section" class="scroll-down-btn">아래로 스크롤해서 지역 검색하기 ↓</a>
+    </div>
+  </header>
+
+  <!-- 스크롤해서 내려오면 보이는 검색 섹션 -->
+  <main>
+    <section id="search-section" class="search-section">
+      <h2>어디서 공부할까요?</h2>
+      <p class="search-desc">
+        <strong>시 · 구</strong>를 선택하고 <strong>검색</strong> 버튼을 누르면,
+        다음 페이지에서 카카오맵과 함께 주변 공부 장소를 보여줄게요.
+      </p>
+
+      <form id="search-form" class="search-form">
+        <!-- 시 선택 -->
+        <label for="city" class="form-label">시 선택</label>
+        <select id="city" name="city" required>
+          <option value="">시를 선택하세요</option>
+          <!-- js/main.js에서 자동 채움 -->
+        </select>
+
+        <!-- 구 선택 -->
+        <label for="district" class="form-label">구 선택</label>
+        <select id="district" name="district" required disabled>
+          <option value="">먼저 시를 선택하세요</option>
+        </select>
+
+        <!-- 기존 검색 버튼 -->
+        <button type="submit" class="search-btn">검색하기</button>
+
+        <!-- 내 위치 기반 검색 -->
+        <button type="button" id="geo-search-btn" class="geo-btn">
+          내 위치 기반으로 검색
+        </button>
+      </form>
+
+      <!-- FocusFlight 바로가기 -->
+      <section class="focusflight-shortcut">
+        <h3 class="focusflight-title">이미 도착해 있나요?</h3>
+        <p class="focusflight-desc">
+          지금 있는 도서관·독서실에서 바로 <strong>포커스 플라이트</strong>를 시작해보세요.
+          타이머로 집중 세션을 기록할 수 있어요.
+        </p>
+        <a href="focus.html" class="focusflight-btn">
+          ✈ 포커스 플라이트 열기
+        </a>
+      </section>
+    </section>
+  </main>
+
+
+  <!-- ✅ 푸터: QR + 앱 설치 버튼 -->
+  <footer class="main-footer">
+  <button type="button" id="qr-toggle-btn" class="qr-btn">
+    QR 코드
+  </button>
+
+  <!-- ✅ 처음엔 숨겨두고, 설치 가능 상태일 때만 JS로 보여주기 -->
+  <button
+    type="button"
+    id="install-btn"
+    class="install-btn"
+    style="display: none;"
+  >
+    📲 앱 설치하기
+  </button>
+</footer>
+
+  <!-- ✅ QR 코드 모달 오버레이 -->
+  <div id="qr-overlay" class="qr-overlay" style="display: none;">
+    <div class="qr-modal">
+      <button id="qr-close-btn" class="qr-close-btn">×</button>
+      <h2 class="qr-title">StudySpot Finder QR 코드</h2>
+      <p class="qr-desc">
+        스마트폰으로 스캔하면 이 메인 화면으로 바로 접속할 수 있어요.
+      </p>
+      <div id="qrcode" class="qr-box"></div>
+    </div>
+  </div>
+
+  <!-- ✅ 로그인 상태 렌더링 -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <script src="./js/main.js"></script>
+  <script src="./js/auth.js"></script>
+  <script src="./js/regions.js"></script>
+</body>
+</html>

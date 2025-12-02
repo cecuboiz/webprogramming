@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>StudySpot Finder | 마이페이지</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./css/main.css" />
+  <link rel="stylesheet" href="./css/search.css" />
+  <link rel="stylesheet" href="./css/auth.css" />
+</head>
+<body>
+  <header class="hero hero--small">
+  <!-- ✅ 상단 우측 정렬 바 -->
+  <div class="hero-top-bar">
+    <a href="index.html" class="hero-home-link">메인 화면</a>
+    <div id="auth-area" class="auth-area"></div>
+  </div>
+
+  <div class="hero-inner hero-inner--auth">
+    <h1 class="site-title">마이페이지</h1>
+    <p class="site-subtitle">
+      내가 좋아요한 공부 장소와 <strong>포커스 플라이트</strong> 세션 기록을 한 번에 볼 수 있어요.
+    </p>
+  </div>
+</header>
+
+  <main class="search-page">
+    <!-- 좋아요한 장소 섹션 -->
+    <section class="results-section">
+      <h2 class="results-title">
+        좋아요한 장소
+        <span id="likes-count" class="results-count-badge">0</span>
+      </h2>
+
+      <div id="likes-container" class="results-container"></div>
+
+      <p id="no-likes-msg" class="no-result-msg" style="display:none;">
+        아직 좋아요한 장소가 없습니다.<br />
+        검색 결과에서 ♥ 버튼을 눌러 관심 장소를 저장해 보세요.
+      </p>
+    </section>
+
+    <!-- ✅ 포커스 플라이트 세션 기록 섹션 -->
+    <section class="results-section">
+      <h2 class="results-title">
+        포커스 플라이트 세션 기록
+        <span id="sessions-count" class="results-count-badge">0</span>
+      </h2>
+
+      <!-- 상단 요약 (주/월/년 탭 + 총 공부시간) -->
+      <div class="session-summary">
+        <div class="session-summary-header">
+          <div class="session-summary-tabs">
+            <button
+              type="button"
+              class="session-tab active"
+              data-range="week"
+            >
+              주
+            </button>
+            <button
+              type="button"
+              class="session-tab"
+              data-range="month"
+            >
+              월
+            </button>
+            <button
+              type="button"
+              class="session-tab"
+              data-range="year"
+            >
+              년
+            </button>
+          </div>
+
+          <div class="session-summary-main">
+            <p class="session-summary-label" id="session-range-label">
+              이번 주 총 공부시간
+            </p>
+            <p class="session-summary-time" id="session-total-time">
+              0분
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 세션 카드 리스트 -->
+      <div id="sessions-container" class="session-list"></div>
+
+      <p id="no-sessions-msg" class="no-result-msg" style="display:none;">
+        아직 저장된 세션이 없습니다.<br />
+        포커스 플라이트에서 타이머를 완료하면 이곳에 기록됩니다.
+      </p>
+    </section>
+  </main>
+
+  <script src="./js/auth.js"></script>
+  <script src="./js/mypage.js"></script>
+</body>
+</html>
