@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>Game Detail</title>
+  <link rel="stylesheet" href="game.css"> <!-- 🔹 game 전용 CSS -->
+  <script src="../script.js" defer></script>
+</head>
+<body class="detail-page">
+  <header class="navbar">
+    <div class="logo" onclick="location.href='../index.html'">
+      <i class="ri-game-fill"></i>
+      <p>GameHub</p>
+    </div>
+    <div class="nav-buttons">
+      <button onclick="location.href='../index.html'">🏠 홈으로</button>
+    </div>
+  </header>
+
+  <div class="detail-root">
+    <!-- 좌측 -->
+    <div class="media-card">
+      <div class="media-frame">
+        <img id="mediaImg" class="media-img hidden">
+        <div id="mediaPh" class="placeholder">이미지 없음</div>
+      </div>
+      
+      <div class="rate-box">
+        <p class="rate-title">별점 평가</p>
+        <div id="stars" class="stars">
+          <span class="star" data-v="1">★</span>
+          <span class="star" data-v="2">★</span>
+          <span class="star" data-v="3">★</span>
+          <span class="star" data-v="4">★</span>
+          <span class="star" data-v="5">★</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 우측 -->
+<div class="info">
+  <h1 id="titleEl" class="game-title">게임 제목</h1>
+  <p id="subEl" class="title-meta">제작사 · 연도</p>
+
+  <div class="metric-row">
+    <span id="detailAvg" class="score"><span class="icon">★</span>0.0 (0)</span>
+    <span><span id="detailRec">0</span> 추천</span>
+  </div>
+
+  <div class="badges">
+    <span id="chipGenre" class="badge">RPG</span>
+    <div id="chipTags" class="badges"></div>
+  </div>
+
+  <h3 class="section-title">게임 소개</h3>
+  <p id="descEl" class="section-body"></p>
+
+  <h3 class="section-title">게임 특징</h3>
+  <div id="featureRow" class="features"></div>
+
+  <!-- 여기 이름만 바꾸기 -->
+  <button id="recBtn" class="cta">👍 이 게임 추천하기</button>
+  <button id="delete-btn" class="delete-btn hidden" onclick="deleteThisGame()">🗑️ 이 게임 삭제하기</button>
+</div>
+</div>
+
+  <!-- 댓글 섹션 -->
+  <section id="commentsSection" class="comments">
+    <h2 class="comments-title">댓글 (<span id="cmtCount">0</span>)</h2>
+
+    <div class="comment-editor">
+      <textarea id="cmtInput" rows="4" placeholder="댓글을 남겨주세요..."></textarea>
+      <button id="cmtSubmit" class="comment-submit">댓글 등록</button>
+    </div>
+
+    <ul id="cmtList" class="comment-list"></ul>
+  </section>
+
+  <script>
+    // 페이지 로드 시 댓글 초기화
+    window.addEventListener("load", () => {
+      if (typeof initGameCommentsView === "function") {
+        initGameCommentsView();     // script.js에 구현(아래 3번)
+      }
+    });
+
+    // 🟢 로그인한 사용자가 이 게임을 등록했으면 삭제 버튼 표시
+      const params = new URLSearchParams(window.location.search);
+      const id = parseInt(params.get("id"));
+      const games = JSON.parse(localStorage.getItem("games") || "[]");
+      const game = games.find(g => g.id === id);
+
+      const email = localStorage.getItem("loggedInUser");
+      if (game.creator === email) {
+        document.querySelector(".delete-btn")?.classList.remove("hidden");
+      } else {
+        document.querySelector(".delete-btn")?.classList.add("hidden");
+      }
+  </script>
+</body>
+</html>
