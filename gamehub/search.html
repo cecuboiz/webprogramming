@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>검색 결과 | GameHub</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.min.css">
+
+</head>
+<body class="search-page">
+  <header class="navbar">
+    <div class="logo" onclick="location.href='index.html'">
+     <i class="ri-game-fill"></i>
+      <p>GameHub</p>
+  </div>
+
+
+    <!-- 검색 전용 페이지의 상단 검색창 -->
+    <div class="search" id="searchBar">
+      <input
+        type="text"
+        id="searchInput"
+        class="search-input"
+        placeholder="게임 제목·장르·플랫폼·태그 검색..."
+        aria-label="게임 검색"
+      />
+      <button class="search-btn" id="searchBtn">검색</button>
+      <ul class="suggest hidden" id="suggestList"></ul>
+    </div>
+
+    <!-- (선택) 우측 버튼/프로필: index.html과 동일하게 두면 됨 -->
+    <div class="nav-buttons" id="navButtons">
+      <button onclick="location.href='add-game.html'">+ 게임 등록</button>
+      <button onclick="showLogin()">🔑 로그인</button>
+      <button onclick="showSignup()">👤 회원가입</button>
+    </div>
+    <div class="profile hidden" id="profileMenu">
+      <span id="profileName" onclick="toggleProfileMenu()"></span>
+      <div class="profile-dropdown hidden" id="profileDropdown">
+        <p onclick="logoutUser()">🚪 로그아웃</p>
+        <p onclick="openProfile()">👤 프로필 보기</p>
+      </div>
+    </div>
+  </header>
+
+  <!-- 검색 결과만 보여주는 영역 -->
+  <section id="searchResults" class="results">
+    <h2 class="results-title">검색 결과</h2>
+    <div class="results-grid" id="resultsGrid"></div>
+    <p class="results-empty hidden" id="resultsEmpty">검색 결과가 없어요 😅</p>
+  </section>
+
+  <!-- (선택) 로그인/회원가입 모달: index.html에서 그대로 복사 가능 -->
+
+  <!-- 로그인, 회원가입, 게임등록이 검색창에서 바로 이용가능하게 만듬11/09 -->
+  <!-- 로그인 모달 -->
+<div id="loginModal" class="modal hidden">
+  <div class="modal-content">
+    <span class="close-btn" onclick="closeModal('loginModal')">&times;</span>
+    <h2>로그인</h2>
+    <p class="welcome-text">GameHub에 오신 것을 환영합니다</p>
+    <label>이메일</label>
+    <input type="email" id="loginEmail" placeholder="your@email.com">
+    <label>비밀번호</label>
+    <input type="password" id="loginPassword" placeholder="********">
+    <p id="loginError" class="error-msg"></p>
+    <button class="login-btn" onclick="handleLogin()">→ 로그인</button>
+    <p class="signup-text">계정이 없으신가요? <span onclick="switchToSignup()">회원가입</span></p>
+  </div>
+</div>
+
+<!-- 회원가입 모달 -->
+<div id="signupModal" class="modal hidden">
+  <div class="modal-content">
+    <span class="close-btn" onclick="closeModal('signupModal')">&times;</span>
+    <h2>회원가입</h2>
+    <p class="welcome-text">GameHub 커뮤니티에 참여하세요</p>
+    <label>사용자 이름</label>
+    <input type="text" id="signupName" placeholder="게이머123">
+    <label>이메일</label>
+    <input type="email" id="signupEmail" placeholder="your@email.com">
+    <label>비밀번호</label>
+    <input type="password" id="signupPassword" placeholder="********">
+    <label>비밀번호 확인</label>
+    <input type="password" id="signupConfirm" placeholder="********">
+    <p id="signupError" class="error-msg"></p>
+    <button class="login-btn" onclick="handleSignup()">⚙ 회원가입</button>
+    <p class="signup-text">이미 계정이 있으신가요? <span onclick="switchToLogin()">로그인</span></p>
+  </div>
+</div>
+
+<!-- 🎮 게임 등록 모달 -->
+<div id="addGameModal" class="modal hidden">
+  <div class="modal-content add-game">
+    <span class="close-btn" onclick="closeModal('addGameModal')">&times;</span>
+    <h2>새 게임 등록</h2>
+    <p class="subtitle">등록할 게임 정보를 입력하세요</p>
+
+    <label>게임 제목 *</label>
+    <input type="text" id="gameTitle" placeholder="예: 엘든 링">
+
+    <label>개발사 *</label>
+    <input type="text" id="gameStudio" placeholder="예: FromSoftware">
+
+    <label>출시년도</label>
+    <input type="number" id="gameYear" placeholder="2025">
+
+    <label>게임 설명</label>
+    <textarea id="gameDesc" rows="3" placeholder="간단한 게임 설명..."></textarea>
+
+    <label>게임 구매 혹은 다운로드 사이트</label>
+    <input type="url" id="gameLink" placeholder="예: https://store.steampowered.com/app/...">
+
+
+    <label>장르 선택 *</label>
+    <div class="add-genre-grid">
+      <label><input type="checkbox" name="genre" value="액션"> ⚔️ 액션</label>
+      <label><input type="checkbox" name="genre" value="RPG"> 🎮 RPG</label>
+      <label><input type="checkbox" name="genre" value="어드벤처"> 🗺️ 어드벤처</label>
+      <label><input type="checkbox" name="genre" value="시뮬레이션"> 🧩 시뮬레이션</label>
+      <label><input type="checkbox" name="genre" value="전략"> ♟️ 전략</label>
+      <label><input type="checkbox" name="genre" value="스포츠"> 🏆 스포츠</label>
+      <label><input type="checkbox" name="genre" value="레이싱"> 🏎️ 레이싱</label>
+      <label><input type="checkbox" name="genre" value="퍼즐"> 🧠 퍼즐</label>
+      <label><input type="checkbox" name="genre" value="호러"> 👻 호러</label>
+      <label><input type="checkbox" name="genre" value="FPS"> 🎯 FPS</label>
+    </div>
+
+
+    <label>태그</label>
+    <div class="tag-options">
+      <label><input type="checkbox" value="싱글플레이"> 싱글플레이</label>
+      <label><input type="checkbox" value="멀티플레이"> 멀티플레이</label>
+      <label><input type="checkbox" value="스토리 중심"> 스토리 중심</label>
+      <label><input type="checkbox" value="그래픽 중요"> 그래픽 중요</label>
+    </div>
+
+    <div class="modal-actions">
+      <button onclick="closeModal('addGameModal')">취소</button>
+      <button class="login-btn" onclick="submitNewGame()">+ 게임 등록</button>
+    </div>
+  </div>
+</div>
+
+  <script src="script.js"></script>
+</body>
+</html>
